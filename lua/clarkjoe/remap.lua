@@ -16,10 +16,13 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("n", "<leader>pp", ":silent %!prettier --stdin-filepath %<CR>")
 
 -- terminal
+--
 keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 keymap.set("n", "<leader>tt", ":tabnew|:te<CR>")
 keymap.set("n", "<leader>vt", ":vs|:te<CR>")
 keymap.set("n", "<leader>ht", ":split|:te<CR>")
+keymap.set("n", "<leader>z", "<C-w>|")
+keymap.set("n", "<leader>Z", "<C-w>=")
 
 -- greatest remap ever
 keymap.set("x", "<leader>p", [["_dP]])
@@ -50,7 +53,3 @@ keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Git
 keymap.set("n", "<leader>gs", vim.cmd.Git);
-
--- Tabs
-keymap.set("n", "<leader>z", ":-tabedit %<CR>")
-keymap.set("n", "<leader>Z", ":tabclose<CR>")

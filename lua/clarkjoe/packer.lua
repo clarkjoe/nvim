@@ -26,6 +26,9 @@ return require('packer').startup(function(use)
         use 'L3MON4D3/LuaSnip'
         use 'saadparwaiz1/cmp_luasnip'
 
+        -- linter
+        use 'mfussenegger/nvim-lint'
+
         -- Tree View
         use {
             'nvim-tree/nvim-tree.lua',
