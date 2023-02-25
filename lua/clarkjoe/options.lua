@@ -45,4 +45,7 @@ vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
 
 -- Fold
-vim.opt.foldmethod = "expr"
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = -1
+vim.opt.foldenable = true

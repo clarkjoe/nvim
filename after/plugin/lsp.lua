@@ -2,10 +2,15 @@ require('mason').setup()
 require('mason-lspconfig').setup {
     ensure_installed = {
         "lua_ls",
-        "tsserver"
+        "tsserver",
+        "rust_analyzer"
     },
 }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -40,24 +45,27 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
---require('lspconfig')['pyright'].setup{
---on_attach = on_attach,
---flags = lsp_flags,
---}
-require('lspconfig').tsserver.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
---require('lspconfig')['rust_analyzer'].setup{
---on_attach = on_attach,
---flags = lsp_flags,
----- Server-specific settings...
---settings = {
---["rust-analyzer"] = {}
---}
---}
-require('lspconfig').lua_ls.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
+
+local language_servers = require("lspconfig").util.available_servers()
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = capabilities,
+    })
+end
+
+-- require('lspconfig').tsserver.setup {
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+-- }
+-- require('lspconfig').rust_analyzer.setup {
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+-- }
+-- require('lspconfig').lua_ls.setup {
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+--     capabilities = capabilities,
+-- }
+require('ufo').setup()

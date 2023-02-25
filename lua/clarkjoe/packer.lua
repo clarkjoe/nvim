@@ -59,6 +59,8 @@ return require('packer').startup(function(use)
                 require('Comment').setup()
             end
         }
+        -- Fold
+        use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
         -- Vim-Fugitive
         --use('tpope/vim-fugitive')
     end)
