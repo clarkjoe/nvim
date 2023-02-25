@@ -1,6 +1,3 @@
--- Leader
-vim.g.mapleader = ','
-
 -- Tabs
 vim.opt.expandtab = true
 vim.opt.smarttab = true
@@ -15,9 +12,6 @@ vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-
--- Timeout
-vim.opt.timeoutlen = 500
 
 -- Search
 vim.opt.hlsearch = false
@@ -52,4 +46,3 @@ vim.opt.colorcolumn = "80"
 
 -- Fold
 vim.opt.foldmethod = "expr"
---vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
