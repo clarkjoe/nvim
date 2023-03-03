@@ -1,10 +1,12 @@
+local language_servers = {
+    "lua_ls",
+    "tsserver",
+    "rust_analyzer"
+}
+
 require('mason').setup()
 require('mason-lspconfig').setup {
-    ensure_installed = {
-        "lua_ls",
-        "tsserver",
-        "rust_analyzer"
-    },
+    ensure_installed = language_servers
 }
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.foldingRange = {
@@ -46,7 +48,6 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-local language_servers = require("lspconfig").util.available_servers()
 for _, ls in ipairs(language_servers) do
     require('lspconfig')[ls].setup({
         on_attach = on_attach,

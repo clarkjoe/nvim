@@ -8,14 +8,14 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- prettier
-vim.keymap.set("n", "<leader>pp", ":silent %!prettier --stdin-filepath %<CR>")
+vim.keymap.set("n", "<leader>pp", ":silent %!npx prettier --stdin-filepath %<CR>")
 
 -- terminal
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>tt", ":tabnew|:te<CR>")
 vim.keymap.set("n", "<leader>vt", ":vs|:te<CR>")
 vim.keymap.set("n", "<leader>ht", ":split|:te<CR>")
-vim.keymap.set("n", "<leader>z", "<C-w>|")
+vim.keymap.set("n", "<leader>z", "<C-w>|<C-w>_")
 vim.keymap.set("n", "<leader>Z", "<C-w>=")
 
 -- greatest remap ever
