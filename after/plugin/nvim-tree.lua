@@ -14,6 +14,7 @@ require("nvim-tree").setup {
     disable_netrw = false,
     view = {
         number = true,
-        relativenumber = true
+        relativenumber = true,
+        width = "30%"
     }
 }
