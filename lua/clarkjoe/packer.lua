@@ -14,6 +14,9 @@ return require('packer').startup(function(use)
         -- gitblame
         use 'f-person/git-blame.nvim'
 
+        -- gitsigns
+        --use 'lewis6991/gitsigns.nvim'
+
         -- lsp server configuration
         use 'williamboman/mason.nvim'
         use('williamboman/mason-lspconfig.nvim', { branch = 'main' })
@@ -61,6 +64,12 @@ return require('packer').startup(function(use)
         }
         -- Fold
         use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+
         -- Vim-Fugitive
-        --use('tpope/vim-fugitive')
+        use 'tpope/vim-fugitive'
+
+        use 'aklt/plantuml-syntax'
+        use 'tyru/open-browser.vim'
+        use 'weirongxu/plantuml-previewer.vim'
+        --use 'dhruvasagar/vim-table-mode'
     end)
