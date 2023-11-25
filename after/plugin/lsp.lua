@@ -2,6 +2,7 @@ local language_servers = {
     "lua_ls",
     "tsserver",
     "rust_analyzer",
+    "gopls"
 }
 
 require('mason').setup()
