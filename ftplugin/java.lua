@@ -1,26 +1,26 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = '/Users/clarkljo/.cache/jdtls-workspace/' .. project_name
+local workspace_dir = '/Users/josephclark/.cache/jdtls-workspace/' .. project_name
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local config = {
     cmd = {
-        '/Users/clarkljo/.local/share/java/amazon-corretto-18.jdk/Contents/Home/bin/java',
+        '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java',
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
-        '-javaagent:/Users/clarkljo/.local/share/java/lombok.jar',
+        '-javaagent:/Users/josephclark/.local/share/java/lombok.jar',
         "-Xms1g",
         "--add-modules=ALL-SYSTEM",
         "--add-opens",
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
-        '-jar', '/Users/clarkljo/.local/share/java/jdt-language-server-1.10.0-202203040350/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
-        '-configuration', '/Users/clarkljo/.local/share/java/jdt-language-server-1.10.0-202203040350/config_mac/',
+        '-jar', '/Users/josephclark/.local/share/java/jdt-language-server-1.10.0-202204131925/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-configuration', '/Users/josephclark/.local/share/java/jdt-language-server-1.10.0-202204131925/config_mac/',
         '-data', workspace_dir
     },
     capabilities = capabilities
