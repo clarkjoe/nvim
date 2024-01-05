@@ -1,26 +1,28 @@
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = '/Users/josephclark/.cache/jdtls-workspace/' .. project_name
+local home = os.getenv('HOME')
+local workspace_dir = home .. '/.cache/jdtls-workspace/' .. project_name
+local jdtls_path = home .. '/.local/share/java/jdtls'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local config = {
     cmd = {
-        '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java',
+        home .. '/Library/Java/JavaVirtualMachines/temurin-17/Contents/Home/bin/java',
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
-        '-javaagent:/Users/josephclark/.local/share/java/lombok.jar',
+        '-javaagent:' .. home .. '/.local/share/java/lombok.jar',
         "-Xms1g",
         "--add-modules=ALL-SYSTEM",
         "--add-opens",
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
-        '-jar', '/Users/josephclark/.local/share/java/jdt-language-server-1.10.0-202204131925/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
-        '-configuration', '/Users/josephclark/.local/share/java/jdt-language-server-1.10.0-202204131925/config_mac/',
+        '-jar', jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-configuration', jdtls_path .. '/config_mac/',
         '-data', workspace_dir
     },
     capabilities = capabilities
