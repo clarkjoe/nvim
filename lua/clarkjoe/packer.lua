@@ -89,4 +89,12 @@ return require('packer').startup(function(use)
         use 'tyru/open-browser.vim'
         use 'weirongxu/plantuml-previewer.vim'
         --use 'dhruvasagar/vim-table-mode'
+
+        -- markdown preview
+        use {
+            "ellisonleao/glow.nvim",
+            config = function()
+                require("glow").setup()
+            end
+        }
     end)
