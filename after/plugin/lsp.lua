@@ -2,7 +2,16 @@ local language_servers = {
     "lua_ls",
     "tsserver",
     "rust_analyzer",
-    "gopls"
+    "gopls",
+    "kotlin_language_server"
+}
+
+local language_server_filetypes = {
+    lua_ls = { "lua" },
+    tsserver = { "ts" },
+    rust_analyzer = { "rust" },
+    gopls = { "go" },
+    kotlin_language_server = { "kotlin", "kt" }
 }
 
 require('mason').setup()
@@ -54,20 +63,8 @@ for _, ls in ipairs(language_servers) do
         on_attach = on_attach,
         flags = lsp_flags,
         capabilities = capabilities,
+        filetypes = language_server_filetypes[ls]
     })
 end
 
--- require('lspconfig').tsserver.setup {
---     on_attach = on_attach,
---     flags = lsp_flags,
--- }
--- require('lspconfig').rust_analyzer.setup {
---     on_attach = on_attach,
---     flags = lsp_flags,
--- }
--- require('lspconfig').lua_ls.setup {
---     on_attach = on_attach,
---     flags = lsp_flags,
---     capabilities = capabilities,
--- }
 require('ufo').setup()
