@@ -47,3 +47,12 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 -- run last command easily
 local def_opts = { silent = false, noremap = true }
 vim.keymap.set({ 'n', 'v' }, '<CR>', ':<up>', def_opts)
+
+-- dynamic macros
+function _G.echo_next_key()
+    local key = vim.fn.getchar()
+    local char = vim.fn.nr2char(key)
+    vim.cmd("'<,'>norm! @" .. char)
+end
+
+vim.api.nvim_set_keymap('x', '<leader>m', ':lua _G.echo_next_key()<CR>', { noremap = true, silent = true })
