@@ -68,22 +68,9 @@ return require('packer').startup(function(use)
         -- Vim-Fugitive
         use 'tpope/vim-fugitive'
 
-        -- nvim-dbee
-        use {
-            "kndndrj/nvim-dbee",
-            requires = {
-                "MunifTanjim/nui.nvim",
-            },
-            run = function()
-                -- Install tries to automatically detect the install method.
-                -- if it fails, try calling it with one of these parameters:
-                --    "curl", "wget", "bitsadmin", "go"
-                require("dbee").install()
-            end,
-            config = function()
-                require("dbee").setup(--[[optional config]])
-            end
-        }
+        -- Vim-Dadbod
+        use 'tpope/vim-dadbod'
+        -- use 'kristijanhusak/vim-dadbod-ui'
 
         use 'aklt/plantuml-syntax'
         use 'tyru/open-browser.vim'
