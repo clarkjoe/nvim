@@ -70,7 +70,7 @@ return require('packer').startup(function(use)
 
         -- Vim-Dadbod
         use 'tpope/vim-dadbod'
-        -- use 'kristijanhusak/vim-dadbod-ui'
+        use 'kristijanhusak/vim-dadbod-ui'
 
         use 'aklt/plantuml-syntax'
         use 'tyru/open-browser.vim'
