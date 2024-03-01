@@ -84,4 +84,7 @@ return require('packer').startup(function(use)
                 require("glow").setup()
             end
         }
+
+        -- copilot
+        use 'github/copilot.vim'
     end)

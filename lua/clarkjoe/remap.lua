@@ -45,8 +45,8 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
 -- run last command easily
-local def_opts = { silent = false, noremap = true }
-vim.keymap.set({ 'n', 'v' }, '<CR>', ':<up>', def_opts)
+-- local def_opts = { silent = false, noremap = true }
+-- vim.keymap.set({ 'n', 'v' }, '<CR>', ':<up>', def_opts)
 
 -- dynamic macros
 function _G.echo_next_key()
