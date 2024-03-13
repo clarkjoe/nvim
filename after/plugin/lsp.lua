@@ -5,7 +5,8 @@ local language_servers = {
     "gopls",
     "kotlin_language_server",
     "pyright",
-    "bufls"
+    "bufls",
+    "r-languageserver"
 }
 
 local language_server_filetypes = {
@@ -14,7 +15,8 @@ local language_server_filetypes = {
     rust_analyzer = { "rust" },
     gopls = { "go" },
     kotlin_language_server = { "kotlin", "kt" },
-    pyright = { "py", "python" }
+    pyright = { "py", "python" },
+    ["r-languageserver"] = { "r" }
 }
 
 require('mason').setup()
