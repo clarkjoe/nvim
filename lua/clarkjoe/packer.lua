@@ -55,6 +55,13 @@ return require('packer').startup(function(use)
         -- UndoTree
         use('mbbill/undotree')
 
+        -- hologram
+        use {'edluffy/hologram.nvim'}
+
+        -- vim-tmux-navigator
+        use { 'alexghergh/nvim-tmux-navigation' }
+
+
         -- Comment
         use {
             'numToStr/Comment.nvim',
