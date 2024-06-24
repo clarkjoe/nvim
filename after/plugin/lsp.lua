@@ -6,27 +6,58 @@ local language_servers = {
     "kotlin_language_server",
     "pyright",
     "bufls",
-    "r-languageserver"
 }
 
 local language_server_filetypes = {
     lua_ls = { "lua" },
-    tsserver = { "ts", "typescript" },
+    tsserver = { "ts", "tsx", "typescript" },
     rust_analyzer = { "rust" },
     gopls = { "go" },
     kotlin_language_server = { "kotlin", "kt" },
     pyright = { "py", "python" },
-    ["r-languageserver"] = { "r" }
 }
 
-require('mason').setup()
-require('mason-lspconfig').setup {
-    ensure_installed = language_servers
-}
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
+}
+
+require('mason').setup()
+require('mason-lspconfig').setup {
+    ensure_installed = language_servers,
+    handlers = {
+        -- function(server_name)
+        --     require("lspconfig")[server_name].setup {
+        --         capabilities = capabilities
+        --     }
+        -- end,
+
+        ["tsserver"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.tsserver.setup({
+                capabilities = capabilities,
+                root_dir = function(fname)
+                    return require 'lspconfig'.util.root_pattern('package.json', 'tsconfig.json', '.git')(fname) or
+                    vim.loop.cwd()
+                end
+            })
+        end,
+
+        ["lua_ls"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup {
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim", "it", "describe", "before_each", "after_each" },
+                        }
+                    }
+                }
+            }
+        end,
+    }
 }
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -45,7 +76,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     --vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     --vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<leader>wl', function()
