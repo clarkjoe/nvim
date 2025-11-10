@@ -6,9 +6,22 @@ local jdtls_path = home .. '/.local/share/java/jdtls'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local settings = {
+    java = {
+        format = {
+            settings = {
+                -- This will use your .editorconfig settings
+                profile = "GoogleStyle", -- You can customize this if needed
+            },
+            insertSpaces = true, -- Will be overridden by .editorconfig
+            tabSize = 4,         -- Will be overridden by .editorconfig
+        }
+    }
+}
+
 local config = {
     cmd = {
-        home .. '/Library/Java/JavaVirtualMachines/temurin-17/Contents/Home/bin/java',
+        home .. '/Library/Java/JavaVirtualMachines/temurin-21/Contents/Home/bin/java',
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -21,11 +34,12 @@ local config = {
         "java.base/java.util=ALL-UNNAMED",
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
-        '-jar', jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-jar', jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
         '-configuration', jdtls_path .. '/config_mac/',
         '-data', workspace_dir
     },
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = settings
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.

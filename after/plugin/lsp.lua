@@ -1,16 +1,17 @@
 local language_servers = {
     "lua_ls",
-    "tsserver",
+    "ts_ls",
     "rust_analyzer",
     "gopls",
     "kotlin_language_server",
     "pyright",
-    "bufls",
+    "buf_ls",
+    "omnisharp"
 }
 
 local language_server_filetypes = {
     lua_ls = { "lua" },
-    tsserver = { "ts", "tsx", "typescript" },
+    ts_ls = { "ts", "tsx", "typescript" },
     rust_analyzer = { "rust" },
     gopls = { "go" },
     kotlin_language_server = { "kotlin", "kt" },
@@ -33,9 +34,9 @@ require('mason-lspconfig').setup {
         --     }
         -- end,
 
-        ["tsserver"] = function()
+        ["ts_ls"] = function()
             local lspconfig = require("lspconfig")
-            lspconfig.tsserver.setup({
+            lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 root_dir = function(fname)
                     return require 'lspconfig'.util.root_pattern('package.json', 'tsconfig.json', '.git')(fname) or

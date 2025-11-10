@@ -15,6 +15,8 @@ vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>tt", ":tabnew|:te<CR>")
 vim.keymap.set("n", "<leader>vt", ":vs|:te<CR>")
 vim.keymap.set("n", "<leader>ht", ":split|:te<CR>")
+vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>hs", ":split<CR>")
 vim.keymap.set("n", "<leader>z", "<C-w>|<C-w>_")
 vim.keymap.set("n", "<leader>Z", "<C-w>=")
 
@@ -50,6 +52,12 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+vim.keymap.set("n", "<leader>gbc", vim.cmd.GitBlameOpenCommitURL);
+vim.keymap.set("n", "<leader>gbf", vim.cmd.GitBlameOpenFileURL);
+vim.keymap.set("n", "<leader>gbh", vim.cmd.GitBlameCopySHA);
+
+-- surround word
+vim.keymap.set("n", "<leader>\"", "cw\"\"<ESC>P")
 
 -- run last command easily
 -- local def_opts = { silent = false, noremap = true }
