@@ -7,7 +7,6 @@ return {
   config = function()
     local language_servers = {
       "lua_ls",
-      "ts_ls",
       "rust_analyzer",
       "kotlin_language_server",
       "buf_ls",
