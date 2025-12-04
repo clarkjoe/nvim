@@ -1,5 +1,0 @@
-require("clarkjoe.global")
-require("clarkjoe.options")
-require("clarkjoe.remap")
-require("clarkjoe.api")
-require("clarkjoe.packer")

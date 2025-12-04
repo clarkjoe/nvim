@@ -1,1 +1,5 @@
-require("clarkjoe")
+require("config.global")
+require("config.options")
+require("config.lazy")
+require("config.keymap")
+require("config.api")
