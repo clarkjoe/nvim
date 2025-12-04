@@ -11,6 +11,7 @@ return {
         CursorLineNr = { fg = "#19cde6", bold = true },
         CursorLine = { bg = "#3a3a3a" },
         ColorColumn = { bg = "#3a3a3a" },
+        Cursor = { bg = "#2186ec", fg = "#000000" },
       },
       palette = {
         bg0 = "#000000",
