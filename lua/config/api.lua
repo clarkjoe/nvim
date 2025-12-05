@@ -1,12 +1,3 @@
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        pcall(function()
-            require("lazy").load({ plugins = { "nvim-tree" } })
-            require("nvim-tree.api").tree.open()
-        end)
-    end,
-})
-
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.agf",
     command = "set fileformat=dos",

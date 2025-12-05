@@ -8,13 +8,15 @@ return {
       "kotlin_language_server",
       "buf_ls",
       "omnisharp",
+      "pyright"
     }
 
     local language_server_filetypes = {
       lua_ls = { "lua" },
       rust_analyzer = { "rust" },
       gopls = { "go" },
-      kotlin_language_server = { "kotlin", "kt" }
+      kotlin_language_server = { "kotlin", "kt" },
+      pyright = { "python" }
     }
 
     -- Setup capabilities for autocompletion and folding

@@ -4,9 +4,9 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "16color",
+        theme = "gruvbox_dark",
         icons_enabled = true
       }
     })
-  end,
+  end
 }

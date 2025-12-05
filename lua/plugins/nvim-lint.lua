@@ -6,9 +6,9 @@ return {
 
     -- Configure linters by filetype
     lint.linters_by_ft = {
-      markdown = { "vale" },
       -- Add more linters for other filetypes here
-      -- python = { "pylint" },
+      -- markdown = { "vale" },
+      python = { "ruff" },
       -- javascript = { "eslint_d" },
       -- typescript = { "eslint_d" },
       -- go = { "golangcilint" },
