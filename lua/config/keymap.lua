@@ -37,18 +37,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- next greatest remap ever : asbjornHaland (copy to clipboard)
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
--- Enable OSC 52 clipboard support for SSH
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-  },
-}
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
