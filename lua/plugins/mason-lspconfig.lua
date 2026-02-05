@@ -11,6 +11,7 @@ return {
       "kotlin_language_server",
       "buf_ls",
       "omnisharp",
+      "gopls",
     }
 
     require("mason-lspconfig").setup({

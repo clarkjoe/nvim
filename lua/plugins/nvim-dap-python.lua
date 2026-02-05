@@ -16,7 +16,7 @@ return {
             commented = true, -- Show virtual text alongside comment
         })
 
-        dap_python.setup("~/dev/strider/.venv/bin/python")
+        dap_python.setup("/Users/joe.leland.clark/dev/strider/.venv/bin/python")
 
         vim.fn.sign_define("DapBreakpoint", {
             text = "",

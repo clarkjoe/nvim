@@ -11,7 +11,7 @@ return {
       python = { "ruff" },
       -- javascript = { "eslint_d" },
       -- typescript = { "eslint_d" },
-      -- go = { "golangcilint" },
+      go = { "golangcilint" },
       -- lua = { "luacheck" },
     }
 

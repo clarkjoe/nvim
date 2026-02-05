@@ -8,7 +8,8 @@ return {
       "kotlin_language_server",
       "buf_ls",
       "omnisharp",
-      "pyright"
+      "pyright",
+      "gopls"
     }
 
     local language_server_filetypes = {

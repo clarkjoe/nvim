@@ -28,7 +28,12 @@ return {
     local builtin = require("telescope.builtin")
     local keymap = vim.keymap
 
-    keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find files" })
+    keymap.set("n", "<leader>pf", function()
+        builtin.find_files({
+            hidden = true,
+            no_ignore = true
+        })
+    end, { desc = "Find files" })
     keymap.set("n", "<leader>pb", builtin.buffers, { desc = "Find buffers" })
     keymap.set("n", "<C-p>", function()
         local ok = pcall(builtin.git_files)
@@ -41,6 +46,7 @@ return {
     keymap.set("n", "<leader>ps", function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end, { desc = "Grep string" })
+    keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "Live grep string" })
 
     keymap.set("n", "<leader>a", builtin.lsp_document_symbols, { desc = "LSP document symbols" })
   end,
