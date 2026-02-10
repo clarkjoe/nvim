@@ -2,6 +2,8 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
   config = function()
+    -- List of language servers to configure
+    -- Installation is handled by mason-tool-installer.lua
     local language_servers = {
       "lua_ls",
       "rust_analyzer",
@@ -15,7 +17,7 @@ return {
     local language_server_filetypes = {
       lua_ls = { "lua" },
       rust_analyzer = { "rust" },
-      gopls = { "go" },
+      gopls = { "go", "gomod" },
       kotlin_language_server = { "kotlin", "kt" },
       pyright = { "python" }
     }
@@ -65,9 +67,11 @@ return {
         vim.tbl_extend("force", bufopts, { desc = "Code action" }))
       vim.keymap.set("n", "gr", vim.lsp.buf.references,
         vim.tbl_extend("force", bufopts, { desc = "Show references" }))
+      -- Note: <leader>cf in conform.nvim is preferred for formatting
+      -- This LSP format is kept as fallback
       vim.keymap.set("n", "<leader>f", function()
         vim.lsp.buf.format({ async = true })
-      end, vim.tbl_extend("force", bufopts, { desc = "Format buffer" }))
+      end, vim.tbl_extend("force", bufopts, { desc = "Format buffer (LSP)" }))
     end
 
     local lsp_flags = {

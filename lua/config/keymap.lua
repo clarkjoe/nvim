@@ -68,3 +68,11 @@ function _G.echo_next_key()
 end
 
 vim.api.nvim_set_keymap('x', '<leader>m', ':lua _G.echo_next_key()<CR>', { noremap = true, silent = true })
+
+-- file path and name
+-- copy absolute file path and file name
+vim.api.nvim_set_keymap('n', '<leader>yap', ':let @+=expand("%:p")<CR>', {noremap = true, silent = true, desc = "Copy full file path"})
+-- copy relative file path and file name
+vim.api.nvim_set_keymap('n', '<leader>yrp', ':let @+=expand("%")<CR>', {noremap = true, silent = true, desc = "Copy relative file path"})
+-- copy file name
+vim.api.nvim_set_keymap('n', '<leader>yfn', ':let @+=expand("%:t")<CR>', {noremap = true, silent = true, desc = "Copy file name"})

@@ -1,38 +1,55 @@
 return {
-    "mfussenegger/nvim-dap",
-    config = function ()
-        local dap = require("dap")
+  "mfussenegger/nvim-dap",
+  config = function()
+    local dap = require("dap")
 
-        local opts = { noremap = true, silent = true }
+    -- Define sign icons for breakpoints and debugging
+    vim.fn.sign_define("DapBreakpoint", {
+      text = "",
+      texthl = "DiagnosticSignError",
+      linehl = "",
+      numhl = "",
+    })
 
-        -- Toggle breakpoint
-        vim.keymap.set("n", "<leader>db", function()
-            dap.toggle_breakpoint()
-        end, opts)
+    vim.fn.sign_define("DapBreakpointRejected", {
+      text = "",
+      texthl = "DiagnosticSignError",
+      linehl = "",
+      numhl = "",
+    })
 
-        -- Continue / Start
-        vim.keymap.set("n", "<leader>dc", function()
-            dap.continue()
-        end, opts)
+    vim.fn.sign_define("DapStopped", {
+      text = "",
+      texthl = "DiagnosticSignWarn",
+      linehl = "Visual",
+      numhl = "DiagnosticSignWarn",
+    })
 
-        -- Step Over
-        vim.keymap.set("n", "<leader>do", function()
-            dap.step_over()
-        end, opts)
+    -- DAP keymaps
+    local opts = { noremap = true, silent = true }
 
-        -- Step Into
-        vim.keymap.set("n", "<leader>di", function()
-            dap.step_into()
-        end, opts)
+    vim.keymap.set("n", "<leader>db", function()
+      dap.toggle_breakpoint()
+    end, vim.tbl_extend("force", opts, { desc = "Toggle breakpoint" }))
 
-        -- Step Out
-        vim.keymap.set("n", "<leader>dO", function()
-            dap.step_out()
-        end, opts)
+    vim.keymap.set("n", "<leader>dc", function()
+      dap.continue()
+    end, vim.tbl_extend("force", opts, { desc = "Continue/Start debugging" }))
 
-        -- Keymap to terminate debugging
-        vim.keymap.set("n", "<leader>dq", function()
-            require("dap").terminate()
-        end, opts)
-    end,
+    vim.keymap.set("n", "<leader>do", function()
+      dap.step_over()
+    end, vim.tbl_extend("force", opts, { desc = "Step over" }))
+
+    vim.keymap.set("n", "<leader>di", function()
+      dap.step_into()
+    end, vim.tbl_extend("force", opts, { desc = "Step into" }))
+
+    vim.keymap.set("n", "<leader>dO", function()
+      dap.step_out()
+    end, vim.tbl_extend("force", opts, { desc = "Step out" }))
+
+    vim.keymap.set("n", "<leader>dq", function()
+      dap.terminate()
+    end, vim.tbl_extend("force", opts, { desc = "Terminate debugging" }))
+  end,
 }

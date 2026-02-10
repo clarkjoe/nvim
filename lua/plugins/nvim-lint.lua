@@ -5,13 +5,15 @@ return {
     local lint = require("lint")
 
     -- Configure linters by filetype
+    -- Installation is handled by mason-tool-installer.lua
+    -- Note: nvim-lint linter names may differ from Mason package names
     lint.linters_by_ft = {
+      python = { "ruff" },
+      go = { "golangcilint" }, -- Mason name: golangci-lint, nvim-lint name: golangcilint
       -- Add more linters for other filetypes here
       -- markdown = { "vale" },
-      python = { "ruff" },
       -- javascript = { "eslint_d" },
       -- typescript = { "eslint_d" },
-      go = { "golangcilint" },
       -- lua = { "luacheck" },
     }
 
