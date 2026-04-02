@@ -76,3 +76,6 @@ vim.api.nvim_set_keymap('n', '<leader>yap', ':let @+=expand("%:p")<CR>', {norema
 vim.api.nvim_set_keymap('n', '<leader>yrp', ':let @+=expand("%")<CR>', {noremap = true, silent = true, desc = "Copy relative file path"})
 -- copy file name
 vim.api.nvim_set_keymap('n', '<leader>yfn', ':let @+=expand("%:t")<CR>', {noremap = true, silent = true, desc = "Copy file name"})
+
+-- delete trailing white space in current buffer
+vim.keymap.set('n', '<leader>tw', ':%s/\\s\\+$//e<CR>', { desc = 'Trim trailing whitespace' })

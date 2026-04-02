@@ -50,3 +50,7 @@ vim.opt.foldcolumn = "1"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
+
+-- Whitespace
+vim.opt.list = true
+vim.opt.listchars:append({ trail = '.' })
