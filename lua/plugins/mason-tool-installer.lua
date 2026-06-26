@@ -11,8 +11,6 @@ return {
     local lsp_servers = {
       "lua-language-server",  -- lspconfig: lua_ls
       "rust-analyzer",        -- lspconfig: rust_analyzer
-      "kotlin-language-server", -- lspconfig: kotlin_language_server
-      "buf-language-server",  -- lspconfig: buf_ls
       "omnisharp",            -- lspconfig: omnisharp
       "pyright",              -- lspconfig: pyright
       "gopls",                -- lspconfig: gopls
