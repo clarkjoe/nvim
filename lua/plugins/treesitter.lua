@@ -116,6 +116,32 @@ return {
       -- Install the parsers we always want.
       ts.install(ensure_installed)
 
+      -- Compatibility shim for telescope.nvim. The pinned telescope version still
+      -- calls the master-branch API that `main` removed:
+      --   nvim-treesitter.parsers.ft_to_lang / .get_parser
+      --   nvim-treesitter.configs.is_enabled / .get_module
+      -- Without this, every file preview errors with `attempt to call field
+      -- 'ft_to_lang' (a nil value)`. This runs at startup (lazy = false), before
+      -- telescope is lazy-loaded, so the shims are present when it captures them.
+      local parsers = require("nvim-treesitter.parsers")
+      parsers.ft_to_lang = parsers.ft_to_lang
+        or function(ft)
+          return vim.treesitter.language.get_lang(ft) or ft
+        end
+      parsers.get_parser = parsers.get_parser
+        or function(bufnr, lang)
+          return vim.treesitter.get_parser(bufnr, lang)
+        end
+      package.loaded["nvim-treesitter.configs"] = package.loaded["nvim-treesitter.configs"]
+        or {
+          is_enabled = function(_, lang, _)
+            return lang ~= nil and vim.tbl_contains(ts.get_installed("parsers"), lang)
+          end,
+          get_module = function()
+            return { enable = true, additional_vim_regex_highlighting = false }
+          end,
+        }
+
       -- Enable highlighting + indentation per buffer, and auto-install missing
       -- parsers on first open (replacement for master's `auto_install = true`).
       vim.api.nvim_create_autocmd("FileType", {
