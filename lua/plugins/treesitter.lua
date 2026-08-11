@@ -10,6 +10,8 @@ local ensure_installed = {
   "css",
   "json",
   "markdown",
+  "markdown_inline", -- required by markview.nvim for inline elements
+  "yaml", -- markdown front matter
   "c",
   "rust",
   "go",
