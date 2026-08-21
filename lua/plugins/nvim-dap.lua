@@ -4,26 +4,27 @@ return {
     local dap = require("dap")
 
     -- Define sign icons for breakpoints and debugging
-    vim.fn.sign_define("DapBreakpoint", {
-      text = "",
-      texthl = "DiagnosticSignError",
-      linehl = "",
-      numhl = "",
-    })
+    local signs = {
+      DapBreakpoint = { text = "●", texthl = "DiagnosticSignError" },
+      DapBreakpointCondition = { text = "◆", texthl = "DiagnosticSignError" },
+      DapLogPoint = { text = "◆", texthl = "DiagnosticSignInfo" },
+      DapBreakpointRejected = { text = "○", texthl = "DiagnosticSignWarn" },
+      DapStopped = {
+        text = "▶",
+        texthl = "DiagnosticSignWarn",
+        linehl = "Visual",
+        numhl = "DiagnosticSignWarn",
+      },
+    }
 
-    vim.fn.sign_define("DapBreakpointRejected", {
-      text = "",
-      texthl = "DiagnosticSignError",
-      linehl = "",
-      numhl = "",
-    })
-
-    vim.fn.sign_define("DapStopped", {
-      text = "",
-      texthl = "DiagnosticSignWarn",
-      linehl = "Visual",
-      numhl = "DiagnosticSignWarn",
-    })
+    for name, opts in pairs(signs) do
+      vim.fn.sign_define(name, {
+        text = opts.text,
+        texthl = opts.texthl,
+        linehl = opts.linehl or "",
+        numhl = opts.numhl or "",
+      })
+    end
 
     -- DAP keymaps
     local opts = { noremap = true, silent = true }
