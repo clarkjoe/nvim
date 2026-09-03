@@ -14,6 +14,7 @@ return {
       "omnisharp",            -- lspconfig: omnisharp
       "pyright",              -- lspconfig: pyright
       "gopls",                -- lspconfig: gopls
+      "terraform-ls",         -- lspconfig: terraformls
     }
 
     local linters = {
