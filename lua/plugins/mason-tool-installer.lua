@@ -10,8 +10,6 @@ return {
     -- Note: These use Mason package names, not lspconfig names
     local lsp_servers = {
       "lua-language-server",  -- lspconfig: lua_ls
-      "rust-analyzer",        -- lspconfig: rust_analyzer
-      "omnisharp",            -- lspconfig: omnisharp
       "pyright",              -- lspconfig: pyright
       "gopls",                -- lspconfig: gopls
       "terraform-ls",         -- lspconfig: terraformls
@@ -26,8 +24,6 @@ return {
       "stylua",   -- Lua
       "prettier", -- JS/TS/JSON/YAML/Markdown/HTML/CSS
       "black",    -- Python
-      -- Note: rustfmt comes with rust toolchain
-      -- Note: gofmt comes with go toolchain
     }
 
     local dap_adapters = {

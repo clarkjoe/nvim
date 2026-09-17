@@ -8,10 +8,7 @@ return {
     -- Installation is handled by mason-tool-installer.lua
     local language_servers = {
       "lua_ls",
-      "rust_analyzer",
-      "kotlin_language_server",
       "buf_ls",
-      "omnisharp",
       "pyright",
       "gopls",
       "terraformls",
