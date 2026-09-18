@@ -13,8 +13,8 @@ return {
     -- Setup nvim-ufo
     require("ufo").setup({
       provider_selector = function(bufnr, filetype, buftype)
-        -- Use treesitter for most files, fallback to indent
-        return { "treesitter", "indent" }
+        -- Use lsp for most files, fallback to indent
+        return { "lsp", "indent" }
       end,
     })
 

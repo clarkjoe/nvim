@@ -7,9 +7,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- prettier
-vim.keymap.set("n", "<leader>pp", ":silent %!npx prettier --stdin-filepath %<CR>")
-
 -- terminal
 vim.keymap.set("t", "<leader><Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>tt", ":tabnew|:te<CR>")
