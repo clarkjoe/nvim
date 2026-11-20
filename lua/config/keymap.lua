@@ -50,9 +50,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
-vim.keymap.set("n", "<leader>gbc", vim.cmd.GitBlameOpenCommitURL);
-vim.keymap.set("n", "<leader>gbf", vim.cmd.GitBlameOpenFileURL);
-vim.keymap.set("n", "<leader>gbh", vim.cmd.GitBlameCopySHA);
+vim.keymap.set("n", "<leader>goc", vim.cmd.GitBlameOpenCommitURL, { desc = "Open commit URL" });
+vim.keymap.set("n", "<leader>gof", vim.cmd.GitBlameOpenFileURL, { desc = "Open file URL" });
+vim.keymap.set("n", "<leader>gy", vim.cmd.GitBlameCopySHA, { desc = "Copy commit SHA" });
 
 -- surround word
 vim.keymap.set("n", "<leader>\"", "cw\"\"<ESC>P")
@@ -68,11 +68,11 @@ vim.api.nvim_set_keymap('x', '<leader>m', ':lua _G.echo_next_key()<CR>', { norem
 
 -- file path and name
 -- copy absolute file path and file name
-vim.api.nvim_set_keymap('n', '<leader>yap', ':let @+=expand("%:p")<CR>', {noremap = true, silent = true, desc = "Copy full file path"})
+vim.api.nvim_set_keymap('n', '<leader>cpa', ':let @+=expand("%:p")<CR>', {noremap = true, silent = true, desc = "Copy full file path"})
 -- copy relative file path and file name
-vim.api.nvim_set_keymap('n', '<leader>yrp', ':let @+=expand("%")<CR>', {noremap = true, silent = true, desc = "Copy relative file path"})
+vim.api.nvim_set_keymap('n', '<leader>cpr', ':let @+=expand("%")<CR>', {noremap = true, silent = true, desc = "Copy relative file path"})
 -- copy file name
-vim.api.nvim_set_keymap('n', '<leader>yfn', ':let @+=expand("%:t")<CR>', {noremap = true, silent = true, desc = "Copy file name"})
+vim.api.nvim_set_keymap('n', '<leader>cpn', ':let @+=expand("%:t")<CR>', {noremap = true, silent = true, desc = "Copy file name"})
 
 -- delete trailing white space in current buffer
 vim.keymap.set('n', '<leader>tw', ':%s/\\s\\+$//e<CR>', { desc = 'Trim trailing whitespace' })
